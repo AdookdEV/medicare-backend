@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: medicare-api
+  datasource:
+    url: ${DB_URL:jdbc:mysql://localhost:13306/medicare}
+    username: ${DB_USERNAME:root}
+    password: ${DB_PASSWORD:Password}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    open-in-view: false
+
+jwt:
+  access-token:
+    expiration-time: 36000000
+#    expiration-time: 5000
+
+  refresh-token:
+    expiration-time: 86400000
+#    expiration-time: 8000
+  secret: 'C0q8$D4RBt7x$-D£z££,kz+9D2*GONQ#'
