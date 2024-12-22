@@ -68,6 +68,7 @@ public class MedicationReminderService {
 
         return reminds.stream().map(r -> {
             var dto = new MedicationReminderDto();
+            dto.setId(r.getId());
             dto.setTitle(r.getTitle());
             dto.setScheduleType(r.getScheduleType());
             dto.setUnitId(r.getUnit().getId());
@@ -87,5 +88,15 @@ public class MedicationReminderService {
 
     public List<MedicationUnit> getMedicationUnits() {
         return medicationUnitRepository.findAll();
+    }
+
+    @Transactional
+    public void deleteReminder(Integer id) {
+        var remind = medicationRemindRepository.findById(id);
+        if (remind.isPresent()) {
+            var remindEntity = remind.get();
+            scheduleDataRepository.deleteByReminder(remindEntity);
+            medicationRemindRepository.deleteById(id);
+        }
     }
 }

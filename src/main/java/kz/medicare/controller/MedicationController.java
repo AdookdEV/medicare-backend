@@ -28,6 +28,12 @@ public class MedicationController {
         return ResponseEntity.ok(medicationReminderService.getReminders());
     }
 
+    @DeleteMapping("/medication-reminder/{id}")
+    public ResponseEntity<Void> getReminders(@PathVariable Integer id) {
+        medicationReminderService.deleteReminder(id);
+        return ResponseEntity.ok().build();
+    }
+
     @GetMapping("/medication-units")
     public ResponseEntity<List<MedicationUnit>> getMedicationUnits() {
         return ResponseEntity.ok(medicationReminderService.getMedicationUnits());

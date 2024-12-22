@@ -11,6 +11,7 @@ import java.util.List;
 @Getter
 @Setter
 public class MedicationReminderDto {
+    private Integer id;
     private ScheduleType scheduleType;
     private List<Entry> entries;
     private String title;

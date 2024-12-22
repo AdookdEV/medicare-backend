@@ -10,4 +10,6 @@ import java.util.List;
 public interface ScheduleDataRepository extends JpaRepository<ScheduleData, Long> {
 
     List<ScheduleData> findScheduleDataByReminder(@NotNull MedicationRemind reminder);
+
+    void deleteByReminder(@NotNull MedicationRemind reminder);
 }
