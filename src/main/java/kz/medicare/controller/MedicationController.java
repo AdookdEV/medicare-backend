@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 
 @RestController
@@ -18,9 +19,8 @@ public class MedicationController {
     private final MedicationReminderService medicationReminderService;
 
     @PostMapping("/medication-reminder")
-    public ResponseEntity<Void> addReminder(@RequestBody MedicationReminderDto request) {
-        medicationReminderService.addReminder(request);
-        return ResponseEntity.ok().build();
+    public ResponseEntity<Map<String, Integer>> addReminder(@RequestBody MedicationReminderDto request) {
+        return ResponseEntity.ok(medicationReminderService.addReminder(request));
     }
 
     @GetMapping("/medication-reminder")

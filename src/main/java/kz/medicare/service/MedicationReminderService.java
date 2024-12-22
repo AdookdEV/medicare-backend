@@ -17,6 +17,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import static kz.medicare.dto.MedicationReminderDto.*;
 
@@ -31,7 +32,7 @@ public class MedicationReminderService {
 
 
     @Transactional
-    public void addReminder(MedicationReminderDto dto) {
+    public Map<String, Integer> addReminder(MedicationReminderDto dto) {
         User patient = userService.getUserFromSecurityContext();
 
         MedicationRemind medicationRemind = new MedicationRemind();
@@ -55,6 +56,8 @@ public class MedicationReminderService {
                 break;
             }
         }
+
+        return Map.of("id", reminder.getId());
     }
 
 
