@@ -1,6 +1,7 @@
 
 package kz.medicare.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 import java.time.LocalDateTime;
@@ -14,6 +15,7 @@ public class Appointment {
     private LocalDateTime appointmentDate;
     private String note;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "doctor_id")
     private Doctor doctor;

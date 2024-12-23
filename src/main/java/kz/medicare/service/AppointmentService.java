@@ -5,19 +5,18 @@ import kz.medicare.entity.Appointment;
 import kz.medicare.entity.Doctor;
 import kz.medicare.repository.AppointmentRepository;
 import kz.medicare.repository.DoctorRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
 @Service
+@RequiredArgsConstructor
 public class AppointmentService {
 
-    @Autowired
-    private AppointmentRepository appointmentRepository;
+    private final AppointmentRepository appointmentRepository;
 
-    @Autowired
-    private DoctorRepository doctorRepository;
+    private final DoctorRepository doctorRepository;
 
     public Appointment createAppointment(Long doctorId, Appointment appointment) {
         Optional<Doctor> doctorOptional = doctorRepository.findById(doctorId);

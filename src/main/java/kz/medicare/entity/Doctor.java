@@ -2,7 +2,10 @@ package kz.medicare.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -18,5 +21,6 @@ public class Doctor {
     private String phone;
 
     @OneToMany(mappedBy = "doctor", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Appointment> appointments;
+    @Fetch(FetchMode.JOIN)
+    private List<Appointment> appointments = new ArrayList<>();
 }
