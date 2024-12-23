@@ -3,7 +3,7 @@ package kz.medicare.controller;
 
 import kz.medicare.entity.Doctor;
 import kz.medicare.service.DoctorService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,11 +11,11 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
+@RequiredArgsConstructor
 @RequestMapping("/api/doctors")
 public class DoctorController {
 
-    @Autowired
-    private DoctorService doctorService;
+    private final DoctorService doctorService;
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
@@ -39,3 +39,4 @@ public class DoctorController {
         doctorService.deleteDoctor(id);
     }
 }
+
