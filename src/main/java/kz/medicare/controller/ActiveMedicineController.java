@@ -38,7 +38,7 @@ public class ActiveMedicineController {
     public List<ActiveMedicineDto> getActiveMedicines(Principal principal) {
         var user = userService.getUserFromSecurityContext();
         var reminders = medicationRemindRepository.findMedicationRemindsByPatient(user);
-        List<ScheduleData> schedules = scheduleDataRepository.findScheduleDataByReminders(reminders);
+        List<ScheduleData> schedules = scheduleDataRepository.findScheduleDataByReminderIn(reminders);
 
 //        schedules.stream()
 //                .filter((sc) -> CronUtilsHelper.matchesCronExpression(sc.getCron()))

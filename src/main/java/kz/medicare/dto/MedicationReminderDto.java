@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Getter
@@ -22,7 +23,9 @@ public class MedicationReminderDto {
     @AllArgsConstructor
     @NoArgsConstructor
     public static class Entry {
+        private Integer id;
         private String cron;
         private Integer dose;
+        private LocalDateTime nextDateTime;
     }
 }

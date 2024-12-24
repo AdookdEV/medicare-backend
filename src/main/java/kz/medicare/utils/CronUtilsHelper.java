@@ -32,20 +32,11 @@ public class CronUtilsHelper {
 
         // Evaluate the cron expression against the given date
         ExecutionTime executionTime = ExecutionTime.forCron(cron);
-        executionTime.
         // Check if the date is a valid match for the cron expression
-        return executionTime.isMatch(ZonedDate);
+        return false;
     }
 
     public static boolean matchesCronExpression(String cronExpression) {
-        return matchesCronExpression(cronExpression, LocalDateTime.now());
-    }
-
-    public static void main(String[] args) {
-        String cronExpression = "0 0 12 * * ?"; // Cron expression: at 12 PM every day
-        LocalDateTime dateTime = LocalDateTime.of(2024, 12, 23, 12, 0);
-
-        boolean isMatch = matchesCronExpression(cronExpression, dateTime);
-        System.out.println("Does the date match the cron expression? " + isMatch);
+        return matchesCronExpression(cronExpression, LocalDate.now());
     }
 }
